@@ -11,16 +11,32 @@ function createMenuItem(name, price, type) {
  return menuItem
 }
 
-function addIngredients(ingredients) {
-  var newIngredient = ingredients.unshift(ingredients)
+function addIngredients(foodItem, ingredients) {
+  for (var i = 0; i < ingredients.length; i++) {
+    if (foodItem === ingredients[i]) {
+      return;
+    }
+  }
+  ingredients.push(foodItem)
 }
 
+function formatPrice(price) {
+  return `$${price}`;
+}
+
+function decreasePrice(price) {
+  return price - (price * 0.1)
+}
+
+function createRecipe() {
+
+}
 
 module.exports = {
   nameMenuItem,
   createMenuItem,
   addIngredients,
-  // formatPrice,
-  // decreasePrice,
-  // createRecipe
+  formatPrice,
+  decreasePrice,
+  createRecipe
 }
