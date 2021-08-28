@@ -26,9 +26,8 @@ function searchOrder(deliveryOrders, foodItem) {
       return true;
       }
     }
-    return false;
+      return false;
   }
-
 
 module.exports = {
   takeOrder,
