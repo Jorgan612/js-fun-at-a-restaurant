@@ -11,24 +11,26 @@ function createRestaurant(name, menus) {
 }
 
 function addMenuItem(newRestaurant, newMenuItem) {
-  // for (var i = 0; i < newRestaurant.menus[newMenuItem.type.length]; i++) {
-
-    // console.log(newRestaurant.menus[newMenuItem.type.length])
-    // console.log(newRestaurant.menus[newMenuItem[i]]);
-    console.log('1', newMenuItem.name);
-    if (newMenuItem.name === newRestaurant.menus[newMenuItem.type]) {
-      console.log('2', newRestaurant.menus[newMenuItem.type]);
-
-      // console.log(newRestaurant.menus[newMenuItem[i]]);
-      return 'test';
-    } else {
-      return newRestaurant.menus[newMenuItem.type].push(newMenuItem);
+  for (var i = 0; i < newRestaurant.menus[newMenuItem.type].length; i++) {
+    if (newMenuItem === newRestaurant.menus[newMenuItem.type][i]) {
+      return;
     }
-  // }
+  }
+      return newRestaurant.menus[newMenuItem.type].push(newMenuItem);
+}
+
+function removeMenuItem(newRestaurant, newMenuItem, type) {
+  for (var i = 0; i < newRestaurant.menus[type].length; i++) {
+    if (newMenuItem === newRestaurant.menus[type][i].name) {
+      newRestaurant.menus[type].splice(i, 1);
+      return `No one is eating our ${newMenuItem} - it has been removed from the ${type} menu!`;
+    }
+  }
+      return `Sorry, we don't sell ${newMenuItem}, try adding a new recipe!`;
 }
 
 module.exports = {
   createRestaurant,
   addMenuItem,
-  // removeMenuItem
+  removeMenuItem
 }
